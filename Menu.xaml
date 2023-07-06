@@ -1,0 +1,15 @@
+﻿<Window x:Class="Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandomChoice"
+        mc:Ignorable="d"
+        Title="Menu" Height="450" Width="242">
+    <Grid Initialized="Grid_Initialized">
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,92" SelectionChanged="ListBox_SelectionChanged" MouseDoubleClick="ListBox_MouseDoubleClick"/>
+        <Button x:Name="btnCreateCategory" Content="Create New&#xD;&#xA;Category" HorizontalAlignment="Left" Margin="10,364,0,0" VerticalAlignment="Top" Height="46" Width="99"/>
+        <Button x:Name="btnEditCategory" Content="Edit &#xD;&#xA;Category" HorizontalAlignment="Left" Margin="121,364,0,0" VerticalAlignment="Top" Height="46" Width="99"/>
+
+    </Grid>
+</Window>
