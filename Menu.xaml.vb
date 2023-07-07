@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Linq.Expressions
 
 Structure categoryFile
     Public fileName As String
@@ -8,7 +9,7 @@ End Structure
 Public Class Menu
     Private categoryLocation As String = My.Computer.FileSystem.CurrentDirectory + "\data\"
     Private fileList As New List(Of categoryFile)
-    Private selectedIndex As Integer
+    'Private selectedIndex As Integer
     Private optionsInSelected As New List(Of String)
 
     Private Sub btnCreateCategory_Click(sender As Object, e As RoutedEventArgs) Handles btnCreateCategory.Click
@@ -33,11 +34,12 @@ Public Class Menu
     End Sub
 
     Private Sub lstbxCategoryList_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles lstbxCategoryList.SelectionChanged
-        selectedIndex = lstbxCategoryList.SelectedIndex
         UpdateInfo()
     End Sub
 
     Private Sub UpdateInfo()
+        Dim selectedIndex As Integer = lstbxCategoryList.SelectedIndex
+
         If (selectedIndex <> -1) Then
             optionsInSelected.Clear()
             txtblkCategoryInfo.Text = ""
@@ -62,6 +64,18 @@ Public Class Menu
         Else
             lblCategoryName.Text = Nothing
             txtblkCategoryInfo.Text = Nothing
+        End If
+
+    End Sub
+
+    Private Sub lstbxCategoryList_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles lstbxCategoryList.MouseDoubleClick
+
+        'Check if we're clicking on a text item in the list
+        If (lstbxCategoryList.IsMouseCaptureWithin) Then
+            UpdateInfo()
+            Dim newRandomiser As New MainWindow
+            newRandomiser.PassOptions(lblCategoryName.Text, optionsInSelected)
+            newRandomiser.Show()
         End If
 
     End Sub
