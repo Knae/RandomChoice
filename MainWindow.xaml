@@ -11,6 +11,7 @@
         <Button x:Name="btnDecide" Content="Decide For Me" HorizontalAlignment="Left" Margin="325,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="lblResult" Content="Possible Choice" HorizontalAlignment="Left" Margin="198,148,0,0" VerticalAlignment="Top" Width="331"/>
         <Label x:Name="lblCategory" Content="Label" HorizontalAlignment="Left" Margin="249,78,0,0" VerticalAlignment="Top" Width="229" Height="45" FontSize="20"/>
+        <Button x:Name="btnReturnToMenu" Content="Return" HorizontalAlignment="Left" Margin="325,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.346,0.435" Width="81"/>
 
     </Grid>
 </Window>
