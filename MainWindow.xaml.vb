@@ -5,7 +5,7 @@ Class MainWindow
     Private choices As New List(Of String)()
 
     Private Sub Grid_Initialized(sender As Object, e As EventArgs)
-        LoadFile(defFileLoc)
+        'LoadFile(defFileLoc)
     End Sub
 
     Public Sub LoadFile(targetLoc As String)

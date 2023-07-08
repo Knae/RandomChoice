@@ -7,18 +7,9 @@ Structure categoryFile
 End Structure
 
 Public Class Menu
-    Private categoryLocation As String = My.Computer.FileSystem.CurrentDirectory + "\data\"
+    Public ReadOnly categoryLocation As String = My.Computer.FileSystem.CurrentDirectory + "\data\"
     Private fileList As New List(Of categoryFile)
-    'Private selectedIndex As Integer
     Private optionsInSelected As New List(Of String)
-
-    Private Sub btnCreateCategory_Click(sender As Object, e As RoutedEventArgs) Handles btnCreateCategory.Click
-
-    End Sub
-
-    Private Sub btnEditCategory_Click(sender As Object, e As RoutedEventArgs) Handles btnEditCategory.Click
-
-    End Sub
 
     Private Sub wndMainMenu_Initialized(sender As Object, e As EventArgs) Handles wndMainMenu.Initialized
         Dim readLine As String = Nothing
@@ -78,5 +69,19 @@ Public Class Menu
             newRandomiser.Show()
         End If
 
+    End Sub
+
+    Private Sub btnCreateCategory_Click(sender As Object, e As RoutedEventArgs) Handles btnCreateCategory.Click
+        Dim newCategoryEditor As New CategoryManager
+        newCategoryEditor.Show()
+    End Sub
+
+    Private Sub btnEditCategory_Click(sender As Object, e As RoutedEventArgs) Handles btnEditCategory.Click
+        If (lstbxCategoryList.SelectedIndex <> -1) Then
+            Dim newCategoryEditor As New CategoryManager
+            Dim selectedFile As categoryFile = fileList.Item(lstbxCategoryList.SelectedIndex)
+            newCategoryEditor.PassOptions(selectedFile.filePath, selectedFile.fileName, optionsInSelected)
+            newCategoryEditor.Show()
+        End If
     End Sub
 End Class
