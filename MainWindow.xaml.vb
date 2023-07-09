@@ -48,5 +48,10 @@ Class MainWindow
 
     Private Sub btnReturnToMenu_Click(sender As Object, e As RoutedEventArgs) Handles btnReturnToMenu.Click
         ' TODO: Button click to return to main menu form
+        Close()
+    End Sub
+
+    Private Sub Window_Closing(sender As Object, e As ComponentModel.CancelEventArgs)
+        Application.Current.MainWindow.Show()
     End Sub
 End Class
